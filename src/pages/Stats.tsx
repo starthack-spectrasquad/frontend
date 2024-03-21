@@ -1,8 +1,8 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle } from '@ionic/react';
 import Container from '../components/Container';
-import { IonIcon, useIonRouter, IonBackButton } from '@ionic/react';
-import { trendingUp, arrowForwardCircle, arrowDownCircleOutline, arrowUpCircleOutline } from 'ionicons/icons';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, AreaChart, Area } from 'recharts';
+import { IonIcon, IonBackButton } from '@ionic/react';
+import { trendingUp, arrowDownCircleOutline, arrowUpCircleOutline } from 'ionicons/icons';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, AreaChart, Area } from 'recharts';
 import { useState } from "react";
 
 
@@ -244,7 +244,7 @@ const Stats: React.FC = () => {
                                                         if (advancedData[`${e.name}Expanded` as keyof AdvancedData] === true) {
                                                             return (
                                                                 <div className="">
-                                                                    {Object.entries(advancedData[e.name]).map(([key, value]) => (
+                                                                    {Object.entries(advancedData[e.name as keyof AdvancedData]).map(([key, value]: any) => (
                                                                         <p key={key}>{key}: {value}</p>
                                                                     ))}
                                                                 </div>

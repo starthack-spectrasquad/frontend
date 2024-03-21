@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonHeader, IonPage, IonTitle } from '@ionic/react';
 import Container from '../components/Container';
 import { IonIcon } from '@ionic/react';
 import { timerOutline, arrowForwardCircle } from 'ionicons/icons';

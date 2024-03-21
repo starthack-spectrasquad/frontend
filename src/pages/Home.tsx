@@ -2,6 +2,7 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/rea
 import Container from '../components/Container';
 import { IonIcon } from '@ionic/react';
 import { timerOutline, arrowForwardCircle } from 'ionicons/icons';
+import { Link } from 'react-router-dom';
 
 
 
@@ -59,14 +60,14 @@ const Home: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <Link className='w-full mb-10' to={"/stats"}>
                                 <div className="mt-6 text-center flex justify-between">
 
                                     <h5 className="text-sm font-extrabold">View full stats</h5>
 
                                     <IonIcon icon={arrowForwardCircle} className='text-lg' />
                                 </div>
-                            </a>
+                            </Link>
                         </div>
                     </Container>
                     <Container>

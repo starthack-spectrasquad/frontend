@@ -3,6 +3,7 @@ import Container from '../components/Container';
 import { IonIcon, useIonRouter, IonBackButton } from '@ionic/react';
 import { trendingUp, arrowForwardCircle, arrowDownCircleOutline } from 'ionicons/icons';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, AreaChart, Area } from 'recharts';
+import {useState} from "react";
 
 
 const data = [
@@ -111,37 +112,56 @@ const getPercent = (value: number, total: number): string => {
     return toPercent(ratio, 2);
 };
 
-const advancedData = {
-    Allergenes: {
-        Lactose: "17.3 grams", Gluten: "166mg", Nuts: "0mg", Soy: "0mg", Eggs: "0mg"
-    },
-    Proteins: {
-        Whey: "4.7 grams", Casein: "2.3 grams", Soy: "0mg", Pea: "0mg", Hemp: "0mg"
-    },
-
-    Vitamins: {
-        A: "3mcg", B: "0.4mg", C: "0mg", D: "0mg", E: "0.14mg"
-    },
-
-    "Amino Acids": {
-        Leucine: "100mg", Isoleucine: "70mg", Valine: "40mg", Methionine: "20mg", Phenylalanine: "0mg"
-    },
-    Electrolytes: {
-        Sodium: "100mg", Potassium: "70mg", Chloride: "40mg", Magnesium: "20mg", Calcium: "0mg"
-    },
-    Bodybuilding: {
-        Creatine: "100mg", BetaAlanine: "70mg", Citrulline: "40mg", BCAA: "20mg", HMB: "0mg"
-    },
-    AllergenesExpanded: false,
-    ProteinsExpanded: false,
-    VitaminsExpanded: false,
-    AminoAcidsExpanded: false,
-    ElectrolytesExpanded: false,
-    BodybuildingExpanded: false
+interface AdvancedData {
+    Allergenes : any,
+    Proteins: any,
+    Vitamins: any,
+    "Amino Acids": any,
+    Electrolytes: any,
+    Bodybuilding: any,
+    AllergenesExpanded: boolean,
+    ProteinsExpanded: boolean,
+    VitaminsExpanded: boolean,
+    AminoAcidsExpanded: boolean,
+    ElectrolytesExpanded: boolean,
+    BodybuildingExpanded: boolean
 }
 
 
 const Stats: React.FC = () => {
+    const [advancedData, setAdvancedData] = useState<AdvancedData>(
+        {
+            Allergenes: {
+                Lactose: "17.3 grams", Gluten: "166mg", Nuts: "0mg", Soy: "0mg", Eggs: "0mg"
+            },
+            Proteins: {
+                Whey: "4.7 grams", Casein: "2.3 grams", Soy: "0mg", Pea: "0mg", Hemp: "0mg"
+            },
+
+            Vitamins: {
+                A: "3mcg", B: "0.4mg", C: "0mg", D: "0mg", E: "0.14mg"
+            },
+
+            "Amino Acids": {
+                Leucine: "100mg", Isoleucine: "70mg", Valine: "40mg", Methionine: "20mg", Phenylalanine: "0mg"
+            },
+            Electrolytes: {
+                Sodium: "100mg", Potassium: "70mg", Chloride: "40mg", Magnesium: "20mg", Calcium: "0mg"
+            },
+            Bodybuilding: {
+                Creatine: "100mg", BetaAlanine: "70mg", Citrulline: "40mg", BCAA: "20mg", HMB: "0mg"
+            },
+            AllergenesExpanded: false,
+            ProteinsExpanded: false,
+            VitaminsExpanded: false,
+            AminoAcidsExpanded: false,
+            ElectrolytesExpanded: false,
+            BodybuildingExpanded: false
+        }
+
+    )
+
+
     return (
         <IonPage>
             <IonContent className='bg-gray-100'>
@@ -182,10 +202,12 @@ const Stats: React.FC = () => {
                                         return (
                                             <div className={"flex items-center my-2"} key={e.name + index}
                                                 onClick={
-                                                    // @ts-ignore
                                                     // trying to access the element advancedData . nameExpanded, so e.g. advancedData.ProteinsExpanded
                                                     () => {
-                                                        advancedData[`${e.name}Expanded`] = !advancedData[`${e.name}Expanded`];
+                                                        const field = `${e.name}Expanded`
+                                                        const newData = JSON.parse(JSON.stringify(advancedData))
+                                                        newData[field as keyof AdvancedData] = !newData[field as keyof AdvancedData]
+                                                        setAdvancedData(newData)
                                                     }
                                                 }>
                                                 <h3 className="text-base text-gray-600"
@@ -200,7 +222,7 @@ const Stats: React.FC = () => {
 
                                                 {(() => {
                                                     // trying to access the element advancedData . nameExpanded, so e.g. advancedData.ProteinsExpanded
-                                                    if (advancedData[`${e.name}Expanded`]) {
+                                                    if (advancedData[`${e.name}Expanded` as keyof AdvancedData] === true) {
                                                         return (
                                                             <div className="">
                                                                 <p>hello</p>

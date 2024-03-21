@@ -77,15 +77,29 @@ const Home: React.FC = () => {
                         </div>
 
 
+                        <div className="bg-white rounded-xl p-7 my-3">
+
+                            <Link className='w-full mb-10' to={"/details"}>
+                                <div>
+                                    <h3 className="text-base font-medium text-gray-600">Today, 8:40</h3>
+                                </div>
+                                <div className='flex items-center justify-between'>
+
+                                    <h3 className="text-lg font-bold ">Mixed cereal with milk</h3>
+                                    <IonIcon icon={arrowForwardCircle} className='text-lg' />
+                                </div>
+                            </Link>
+                        </div>
+
                         <div className="bg-white rounded-xl p-7">
 
                             <Link className='w-full mb-10' to={"/details"}>
                                 <div>
-                                    <h3 className="text-base font-medium text-gray-600">Today, 22:40</h3>
+                                    <h3 className="text-base font-medium text-gray-600">Today, 12:39</h3>
                                 </div>
                                 <div className='flex items-center justify-between'>
 
-                                    <h3 className="text-lg font-bold ">YFood - very disappointing</h3>
+                                    <h3 className="text-lg font-bold ">Pasta-Dish</h3>
                                     <IonIcon icon={arrowForwardCircle} className='text-lg' />
                                 </div>
                             </Link>

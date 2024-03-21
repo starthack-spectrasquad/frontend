@@ -1,9 +1,9 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import Container from '../components/Container';
 import { IonIcon, useIonRouter, IonBackButton } from '@ionic/react';
-import { trendingUp, arrowForwardCircle, arrowDownCircleOutline } from 'ionicons/icons';
+import { trendingUp, arrowForwardCircle, arrowDownCircleOutline, arrowUpCircleOutline } from 'ionicons/icons';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, AreaChart, Area } from 'recharts';
-import {useState} from "react";
+import { useState } from "react";
 
 
 const data = [
@@ -113,7 +113,7 @@ const getPercent = (value: number, total: number): string => {
 };
 
 interface AdvancedData {
-    Allergenes : any,
+    Allergenes: any,
     Proteins: any,
     Vitamins: any,
     "Amino Acids": any,
@@ -200,43 +200,65 @@ const Stats: React.FC = () => {
                                             customClass += " bg-red-500"
 
                                         return (
-                                            <div className={"flex items-center my-2"} key={e.name + index}
-                                                onClick={
-                                                    // trying to access the element advancedData . nameExpanded, so e.g. advancedData.ProteinsExpanded
-                                                    () => {
-                                                        const field = `${e.name}Expanded`
-                                                        const newData = JSON.parse(JSON.stringify(advancedData))
-                                                        newData[field as keyof AdvancedData] = !newData[field as keyof AdvancedData]
-                                                        setAdvancedData(newData)
+                                            <>
+                                                <div className={"flex items-center my-2"} key={e.name + index}
+                                                    onClick={
+                                                        // trying to access the element advancedData . nameExpanded, so e.g. advancedData.ProteinsExpanded
+                                                        () => {
+                                                            const field = `${e.name}Expanded`
+                                                            const newData = JSON.parse(JSON.stringify(advancedData))
+                                                            newData[field as keyof AdvancedData] = !newData[field as keyof AdvancedData]
+                                                            setAdvancedData(newData)
+                                                        }
+                                                    }>
+                                                    <h3 className="text-base text-gray-600"
+                                                        style={{ width: "50%" }}>{e.name}</h3>
+                                                    <div className='flex items-center h-6 bg-gray-200 ' style={{ width: "30%", borderRadius: "25px" }}>
+                                                        <div className={customClass} style={{ width: e.value, borderRadius: "25px" }}></div>
+                                                        <div className=' bg-gray-200 h-6' style={{ width: 100 - e.value, borderRadius: "25px" }}></div>
+                                                    </div>
+
+                                                    {
+                                                        (() => {
+                                                            // trying to access the element advancedData . nameExpanded, so e.g. advancedData.ProteinsExpanded
+                                                            if (advancedData[`${e.name}Expanded` as keyof AdvancedData] === true) {
+                                                                return (
+                                                                    <div className={"flex justify-center"} style={{ width: "20%" }}>
+                                                                        <IonIcon icon={arrowUpCircleOutline} />
+                                                                    </div>
+                                                                );
+                                                            } else {
+                                                                return (
+                                                                    <div className={"flex justify-center"} style={{ width: "20%" }}>
+                                                                        <IonIcon icon={arrowDownCircleOutline} />
+                                                                    </div>
+                                                                );
+                                                            }
+                                                            return null;
+                                                        })()
                                                     }
-                                                }>
-                                                <h3 className="text-base text-gray-600"
-                                                    style={{ width: "50%" }}>{e.name}</h3>
-                                                <div className='flex items-center h-6 bg-gray-200 ' style={{ width: "30%", borderRadius: "25px" }}>
-                                                    <div className={customClass} style={{ width: e.value, borderRadius: "25px" }}></div>
-                                                    <div className=' bg-gray-200 h-6' style={{ width: 100 - e.value, borderRadius: "25px" }}></div>
                                                 </div>
-                                                <div className={"flex justify-center"} style={{ width: "20%" }}>
-                                                    <IonIcon icon={arrowDownCircleOutline} />
-                                                </div>
-
-                                                {(() => {
-                                                    // trying to access the element advancedData . nameExpanded, so e.g. advancedData.ProteinsExpanded
-                                                    if (advancedData[`${e.name}Expanded` as keyof AdvancedData] === true) {
-                                                        return (
-                                                            <div className="">
-                                                                <p>hello</p>
-                                                            </div>
-                                                        );
-                                                    }
-                                                    return null;
-                                                })()}
-
-
-                                            </div>
+                                                {
+                                                    (() => {
+                                                        // trying to access the element advancedData . nameExpanded, so e.g. advancedData.ProteinsExpanded
+                                                        if (advancedData[`${e.name}Expanded` as keyof AdvancedData] === true) {
+                                                            return (
+                                                                <div className="">
+                                                                    {Object.entries(advancedData[e.name]).map(([key, value]) => (
+                                                                        <p key={key}>{key}: {value}</p>
+                                                                    ))}
+                                                                </div>
+                                                            );
+                                                        }
+                                                        return null;
+                                                    })()
+                                                }
+                                            </>
                                         )
                                     })}
-                                </div>
+
+                                </div >
+
 
 
                             </div>

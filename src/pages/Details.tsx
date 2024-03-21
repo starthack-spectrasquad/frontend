@@ -20,7 +20,7 @@ const Details: React.FC = () => {
     return (
         <IonPage >
            <IonContent>
-               <div  className="bg-gray-100 h-100">
+               <div  className="bg-gray-100 h-fit min-h-full">
                <Container>
                    <div className='flex items-center jusitify-between'>
                        <IonBackButton defaultHref="home"></IonBackButton>

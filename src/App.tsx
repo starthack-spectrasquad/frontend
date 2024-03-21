@@ -10,12 +10,11 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import home from '/home.svg'
-import recommendation from '/recommendations.svg'
-import profile from '/profile.svg'
 import Home from './pages/Home';
 import Recommendations from './pages/Recommendations';
 import Profile from './pages/Profile';
+import { home, flame, person } from 'ionicons/icons';
+
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -62,15 +61,15 @@ const App: React.FC = () => (
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="home" href="/home">
-            <IonIcon aria-hidden="true" icon={home} />
+            <IonIcon icon={home} />
             <IonLabel>Home</IonLabel>
           </IonTabButton>
           <IonTabButton tab="recommendation" href="/recommendation">
-            <IonIcon aria-hidden="true" icon={recommendation} />
+            <IonIcon icon={flame} />
             <IonLabel>Recommendations</IonLabel>
           </IonTabButton>
           <IonTabButton tab="profile" href="/profile">
-            <IonIcon aria-hidden="true" icon={profile} />
+            <IonIcon icon={person} />
             <IonLabel>Profile</IonLabel>
           </IonTabButton>
         </IonTabBar>

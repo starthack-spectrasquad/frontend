@@ -11,7 +11,7 @@ const Recommendations: React.FC = () => {
             <IonTitle size="large">Tab 2</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <Container name="Tab 2 page" />
+        {/*<Container name="Tab 2 page" />*/}
       </IonContent>
     </IonPage>
   );

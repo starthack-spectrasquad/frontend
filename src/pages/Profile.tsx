@@ -11,7 +11,7 @@ const Profile: React.FC = () => {
             <IonTitle size="large">Tab 3</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <Container name="Tab 3 page" />
+        {/*<Container name="Tab 3 page" />*/}
       </IonContent>
     </IonPage>
   );

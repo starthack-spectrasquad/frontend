@@ -1,46 +1,101 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import Container from '../components/Container';
-import './Home.css';
-import Heading from "../components/Heading";
+import { IonIcon } from '@ionic/react';
+import { timerOutline, arrowForwardCircle } from 'ionicons/icons';
+
+
 
 const Home: React.FC = () => {
-  return (
-    <IonPage>
-        <IonContent fullscreen>
-            <IonHeader collapse="condense">
-                <IonToolbar>
-                    <IonTitle size="large">Tab 1</IonTitle>
-                </IonToolbar>
-            </IonHeader>
-            <Container>
-                <Heading name={"Home"}/>
-                <div className="bg-white rounded-lg shadow-md p-6">
-                    <div className="flex justify-between items-center">
-                        <h2 className="text-xl font-bold text-gray-800">Your health score</h2>
-                        <span className="text-2xl font-bold text-green-500">67/100</span>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                        <div>
-                            <h3 className="text-base font-medium text-gray-600">Proteins</h3>
-                        </div>
-                        <div>
-                            <h3 className="text-base font-medium text-gray-600">Carbohydrates</h3>
-                        </div>
-                        <div>
-                            <h3 className="text-base font-medium text-gray-600">Fats</h3>
-                        </div>
-                    </div>
-                    <div className="mt-6 text-center">
-                        <a href="#" className="text-sm font-medium text-blue-600 underline">
-                            View full stats
-                        </a>
-                    </div>
-                </div>
-            </Container>
+    return (
+        <div className='bg-gray-100'>
 
-        </IonContent>
-    </IonPage>
-  );
+            <IonPage className='m-0 p-0'>
+
+
+                <div className='bg-gray-100 min-h-screen'>
+
+                    <IonHeader className='mt-10 mx-6'>
+                        <IonTitle size="large">Home</IonTitle>
+                    </IonHeader>
+
+
+                    <Container>
+
+                        <div className="bg-white rounded-xl p-7">
+
+                            <h2 className="text-xl font-bold text-gray-800">Health score</h2>
+
+                            <div className='flex items-center justify-start'>
+                                <h2 className="text-4xl font-black text-indigo-500">67</h2>
+                                <h2 className="text-4xl font-black text-gray-800">/100</h2>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                <div>
+                                    <h3 className="text-base font-medium text-gray-600">Calories</h3>
+                                    <div className='flex items-center'>
+                                        <div className=' bg-indigo-200 h-3' style={{ width: '60%' }}></div>
+                                        <div className=' bg-gray-200 h-3' style={{ width: '40%' }}></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 className="text-base font-medium text-gray-600">Proteins</h3>
+                                    <div className='flex items-center'>
+                                        <div className=' bg-indigo-200 h-3' style={{ width: '80%' }}></div>
+                                        <div className=' bg-gray-200 h-3' style={{ width: '20%' }}></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 className="text-base font-medium text-gray-600">Carbohydrates</h3>
+                                    <div className='flex items-center'>
+                                        <div className=' bg-indigo-200 h-3' style={{ width: '70%' }}></div>
+                                        <div className=' bg-gray-200 h-3' style={{ width: '30%' }}></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 className="text-base font-medium text-gray-600">Fats</h3>
+                                    <div className='flex items-center'>
+                                        <div className=' bg-indigo-200 h-3' style={{ width: '30%' }}></div>
+                                        <div className=' bg-gray-200 h-3' style={{ width: '70%' }}></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div className="mt-6 text-center flex justify-between">
+
+                                    <h5 className="text-sm font-extrabold">View full stats</h5>
+
+                                    <IonIcon icon={arrowForwardCircle} className='text-lg' />
+                                </div>
+                            </a>
+                        </div>
+                    </Container>
+                    <Container>
+                        <div className='flex justify-start items-center mb-6'>
+                            <IonIcon icon={timerOutline} className='mr-2' />
+                            <h2 className="text-2xl font-bold text-gray-800">History</h2>
+                        </div>
+
+
+                        <div className="bg-white rounded-xl p-7">
+
+                            <div className="">
+                                <div>
+                                    <h3 className="text-base font-medium text-gray-600">Today, 22:40</h3>
+                                </div>
+                                <div className='flex items-center justify-between'>
+
+                                    <h3 className="text-lg font-bold ">YFood - very disappointing</h3>
+                                    <IonIcon icon={arrowForwardCircle} className='text-lg' />
+                                </div>
+                            </div>
+                        </div>
+                    </Container>
+
+
+                </div>
+            </IonPage>
+        </div>
+    );
 };
 
 export default Home;

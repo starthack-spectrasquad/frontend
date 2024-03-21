@@ -22,6 +22,13 @@ const Profile: React.FC = () => {
         { name: 'Bodybuilding', value: 100, unit: "%" },
     ];
 
+    const goalsOptions = [
+        {name: "gain muscles"},
+        {name: "lose weight"},
+        {name: "get diabetes"}
+
+    ]
+
     const [height, setHeight] = useState(0)
     const [weight, setWeight] = useState(0)
   return (
@@ -61,7 +68,7 @@ const Profile: React.FC = () => {
 
 
                       <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                              className="flex justify-between w-full rounded-3xl text-lg font-semibold bg-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium  px-5 py-6 text-center inline-flex items-center"
+                              className="flex justify-between w-full rounded-3xl text-lg font-semibold bg-white focus:ring-4 focus:outline-none focus:ring-blue-300 px-5 py-6 text-center inline-flex items-center"
                               type="button">
                           <span>Build muscule</span>
                           <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true"
@@ -74,27 +81,17 @@ const Profile: React.FC = () => {
 
 
                       <div id="dropdown"
-                           className="z-10 hidden divide-y divide-gray-100 rounded-lg shadow bg-white">
-                          <ul className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                           className="w-5/6 z-10 hidden divide-y divide-gray-100 rounded-lg shadow bg-white">
+                          <ul className="w-full font-semibold text-lg py-2 text-gray-700 dark:text-gray-200"
                               aria-labelledby="dropdownDefaultButton">
-                              <li>
-                                  <a href="#"
-                                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                              </li>
-                              <li>
-                                  <a href="#"
-                                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                              </li>
-                              <li>
-                                  <a href="#"
-                                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                              </li>
-                              <li>
-
-                                  <a href="#"
-                                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
-                                      out</a>
-                              </li>
+                              {goalsOptions.map((e:any) => {
+                                  return (
+                                      <li>
+                                          <a href="#"
+                                             className=" px-5 py-2 block  hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{e.name}</a>
+                                      </li>
+                                  )
+                              })}
                           </ul>
                       </div>
 

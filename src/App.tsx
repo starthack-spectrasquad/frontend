@@ -13,6 +13,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 import Recommendations from './pages/Recommendations';
 import Profile from './pages/Profile';
+import Stats from './pages/Stats';
 import { home, flame, person } from 'ionicons/icons';
 
 
@@ -45,6 +46,9 @@ const App: React.FC = () => (
         <IonRouterOutlet >
           <Route exact path="/home">
             <Home />
+          </Route>
+          <Route exact path="/stats">
+            <Stats />
           </Route>
           <Route exact path="/recommendation">
             <Recommendations />

@@ -28,8 +28,9 @@ const Profile: React.FC = () => {
       <IonPage >
           <IonContent >
               <div className="bg-gray-100 h-fit min-h-full">
+                  <Heading name={"Profile"}/>
                   <Container>
-                      <Heading name={"Profile"}/>
+
 
                       <div className={"flex"}>
                           <div className={"w-2/4"}>

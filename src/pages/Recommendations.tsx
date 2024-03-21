@@ -37,8 +37,9 @@ const Recommendations: React.FC = () => {
           <IonPage >
               <IonContent >
                   <div className="bg-gray-100 h-fit min-h-full">
+                      <Heading name={"Recommendations"}/>
               <Container >
-                  <Heading name={"Recommendations"}/>
+
 
                   <div className={"flex gap-5 items-center my-5"}>
                       <IonIcon icon={bulb}/>

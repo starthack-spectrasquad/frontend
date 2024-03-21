@@ -11,7 +11,7 @@ import {useState} from "react";
 const Profile: React.FC = () => {
     const data = [
         { name: 'Goal weight', value: 80, unit: "kg" },
-        { name: 'Proteins', value: 10, unit: "%"},
+        { name: 'Proteins', value: 19, unit: "%"},
         { name: 'Vitamins', value: 30,unit: "%" },
         { name: 'Amino Acids', value: 50,unit: "%" },
         { name: 'Electrolytes', value: 80,unit: "%" },
@@ -19,11 +19,21 @@ const Profile: React.FC = () => {
     ];
 
     const goalsOptions = [
-        {name: "gain muscles"},
-        {name: "lose weight"},
-        {name: "get diabetes"}
+        {name: "improve endurance & cognitive performance"},
+        {name: "lose belly fat"},
+        {name: "improve explosive strength"}
 
     ]
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedGoal, setSelectedGoal] = useState(goalsOptions[0].name);
+
+    const toggleDropdown = () => setIsOpen(!isOpen);
+
+    const selectGoal = (goal:any) => {
+        setSelectedGoal(goal.name);
+        setIsOpen(false);
+    };
 
     const [height, setHeight] = useState(197)
     const [weight, setWeight] = useState(65)
@@ -61,34 +71,29 @@ const Profile: React.FC = () => {
                       <div className="text-xl mt-8 my-2 font-semibold">Your goals:</div>
 
 
-
-
-                      <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                              className="flex justify-between w-full rounded-3xl text-lg font-semibold bg-white focus:ring-4 focus:outline-none focus:ring-blue-300 px-5 py-6 text-center inline-flex items-center"
-                              type="button">
-                          <span>Build muscule</span>
-                          <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true"
-                                                                 xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                 viewBox="0 0 10 6">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4"/>
-                      </svg>
-                      </button>
-
-
-                      <div id="dropdown"
-                           className="w-5/6 z-10 hidden divide-y divide-gray-100 rounded-lg shadow bg-white">
-                          <ul className="w-full font-semibold text-lg py-2 text-gray-700 dark:text-gray-200"
-                              aria-labelledby="dropdownDefaultButton">
-                              {goalsOptions.map((e:any) => {
-                                  return (
-                                      <li>
-                                          <a href="#"
-                                             className=" px-5 py-2 block  hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{e.name}</a>
-                                      </li>
-                                  )
-                              })}
-                          </ul>
+                      <div className="w-128">
+                          <button onClick={toggleDropdown}
+                                  className="items-center justify-between w-full rounded-3xl text-lg font-semibold bg-white focus:ring-4 focus:outline-none focus:ring-blue-300 px-5 py-6  inline-flex ">
+                              <span className={"text-left"}>{selectedGoal}</span>
+                              <svg className="w-2.5 h-2.5 ms-3" fill="none" viewBox="0 0 10 6">
+                                  <path stroke="currentColor" d="m1 1 4 4 4-4"/>
+                              </svg>
+                          </button>
+                          {isOpen && (
+                              <div className="absolute w-5/6 z-10 divide-y divide-gray-100 rounded-lg shadow bg-white">
+                                  <ul className="w-full text-lg py-2 text-gray-700"
+                                      aria-labelledby="dropdownDefaultButton">
+                                      {goalsOptions.map((data, i) => {
+                                          return (
+                                              <li key={i} onClick={() => selectGoal(data)}
+                                                  className=" px-5 py-2 block hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer">
+                                                  {data.name}
+                                              </li>
+                                          )
+                                      })}
+                                  </ul>
+                              </div>
+                          )}
                       </div>
 
 

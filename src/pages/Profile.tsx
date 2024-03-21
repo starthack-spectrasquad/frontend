@@ -1,14 +1,10 @@
-import {IonContent, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar} from '@ionic/react';
+import {IonContent, IonIcon, IonPage} from '@ionic/react';
 import Container from '../components/Container';
 import Heading from "../components/Heading";
 import {
-    arrowForwardCircleOutline,
-    bulb,
-    flame,
     personCircle,
     idCard,
-    barbell,
-    arrowDownCircleOutline
+    barbell
 } from "ionicons/icons";
 import {useState} from "react";
 
@@ -29,8 +25,8 @@ const Profile: React.FC = () => {
 
     ]
 
-    const [height, setHeight] = useState(0)
-    const [weight, setWeight] = useState(0)
+    const [height, setHeight] = useState(197)
+    const [weight, setWeight] = useState(65)
   return (
       <IonPage >
           <IonContent >
@@ -107,7 +103,6 @@ const Profile: React.FC = () => {
                                   customClass += " bg-red-300"
                               else
                                   customClass += " bg-red-500"
-                              //80-120 indigo-900 50-80
 
                               return (
                                   <div className={"flex items-center my-4"}>

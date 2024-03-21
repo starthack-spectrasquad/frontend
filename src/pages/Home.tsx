@@ -79,7 +79,7 @@ const Home: React.FC = () => {
 
                         <div className="bg-white rounded-xl p-7">
 
-                            <div className="">
+                            <Link className='w-full mb-10' to={"/details"}>
                                 <div>
                                     <h3 className="text-base font-medium text-gray-600">Today, 22:40</h3>
                                 </div>
@@ -88,8 +88,9 @@ const Home: React.FC = () => {
                                     <h3 className="text-lg font-bold ">YFood - very disappointing</h3>
                                     <IonIcon icon={arrowForwardCircle} className='text-lg' />
                                 </div>
-                            </div>
+                            </Link>
                         </div>
+
                     </Container>
 
 

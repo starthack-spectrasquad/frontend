@@ -1,26 +1,30 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import {IonContent, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar} from '@ionic/react';
 import Container from '../components/Container';
 import Heading from "../components/Heading";
 import {Cell, Pie, PieChart, Tooltip} from "recharts";
 import CustomBarChart from "../components/CustomBarChart";
+import {arrowForwardCircle, arrowDownCircleOutline} from "ionicons/icons";
 
 const Details: React.FC = () => {
     const data = [
-        { name: 'Proteins', value: 400 },
-        { name: 'Carbohydrates', value: 300 },
-        { name: 'Fat', value: 300 },
+        { name: 'Allergenes', value: 80,  },
+        { name: 'Proteins', value: 10,},
+        { name: 'Vitamins', value: 30, },
+        { name: 'Amino Acids', value: 50, },
+        { name: 'Electrolytes', value: 80, },
+        { name: 'Bodybuilding', value: 100,  },
     ];
 
     const COLORS = ['#6b7280', '#a0aec0', '#e2e8f0'];
 
     return (
-        <IonPage >
-            <div className="bg-gray-100">
+        <IonPage className="bg-gray-100" >
+           <div className="bg-gray-100">
                 <Container>
                     <Heading name={"Details"}/>
-                    <div className="max-w-md mx-auto my-2 p-6 bg-white rounded-3xl">
+                    <div className="max-w-md mx-auto my-2 mb-12 p-6 bg-white rounded-3xl">
                         <div className="text-2xl font-semibold">Overview</div>
-                        <div className="flex items-center">
+                        <div className="flex items-center justify-center">
                             <PieChart width={250} height={250}>
                                 <Pie
                                     data={data}
@@ -44,10 +48,36 @@ const Details: React.FC = () => {
                     </div>
 
                     <div className="max-w-md mx-auto my-2 p-6 bg-white rounded-3xl">
-                            <CustomBarChart/>
+                        {data.map((e: any):any => {
+                            let customClass = "h-6 flex items-center justify-center"
+                            if (e.value > 80 && e.value <= 120)
+                                customClass += " bg-indigo-900"
+                                else if (e.value > 50 && e.value <= 80 || e.value > 120 && e.value <= 150)
+                                customClass += " bg-indigo-500"
+                                    else if (e.value >= 20 && e.value <= 50 || e.value > 150 && e.value <= 180)
+                                customClass += " bg-red-300"
+                                            else
+                                customClass += " bg-red-500"
+                                    //80-120 indigo-900 50-80
+
+                            return (
+                                <div className={"flex items-center my-2"}>
+                                    <h3 className="text-base text-2xl text-gray-600"
+                                        style={{width: "50%"}}>{e.name}</h3>
+                                    <div className='flex items-center h-6 bg-gray-200 ' style={{width: "30%",  borderRadius: "25px"}}>
+                                        <div className={customClass} style={{width: e.value, borderRadius: "25px"}}></div>
+                                        <div className=' bg-gray-200 h-6' style={{width: 100-e.value, borderRadius: "25px"}}></div>
+                                    </div>
+                                    <div className={"flex justify-center"} style={{width: "20%"}}>
+                                        <IonIcon icon={arrowDownCircleOutline}/>
+                                    </div>
+                                </div>
+                            )
+                        })}
+
                     </div>
                 </Container>
-        </div>
+           </div>
         </IonPage>
     );
 };

@@ -47,7 +47,7 @@ const Details: React.FC = () => {
 
                     </div>
 
-                    <div className="max-w-md mx-auto my-2 p-6 bg-white rounded-3xl">
+                    <div className="max-w-md mx-auto my-2 p-4 bg-white rounded-3xl">
                         {data.map((e: any):any => {
                             let customClass = "h-6 flex items-center justify-center"
                             if (e.value > 80 && e.value <= 120)
@@ -62,13 +62,13 @@ const Details: React.FC = () => {
 
                             return (
                                 <div className={"flex items-center my-2"}>
-                                    <h3 className="text-base text-2xl text-gray-600"
-                                        style={{width: "50%"}}>{e.name}</h3>
+                                    <h3 className=" font-semibold text-xl text-gray-600"
+                                        style={{width: "45%"}}>{e.name}</h3>
                                     <div className='flex items-center h-6 bg-gray-200 ' style={{width: "30%",  borderRadius: "25px"}}>
                                         <div className={customClass} style={{width: e.value, borderRadius: "25px"}}></div>
                                         <div className=' bg-gray-200 h-6' style={{width: 100-e.value, borderRadius: "25px"}}></div>
                                     </div>
-                                    <div className={"flex justify-center"} style={{width: "20%"}}>
+                                    <div className={"flex justify-center"} style={{width: "25%"}}>
                                         <IonIcon icon={arrowDownCircleOutline}/>
                                     </div>
                                 </div>

@@ -1,6 +1,5 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import Container from '../components/Container';
-import './Home.css';
 import Heading from "../components/Heading";
 
 const Home: React.FC = () => {

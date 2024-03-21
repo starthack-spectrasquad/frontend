@@ -1,6 +1,5 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import Container from '../components/Container';
-import './Profile.css';
 
 const Profile: React.FC = () => {
   return (
@@ -16,7 +15,7 @@ const Profile: React.FC = () => {
             <IonTitle size="large">Tab 3</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <Container name="Tab 3 page" />
+        {/*<Container name="Tab 3 page" />*/}
       </IonContent>
     </IonPage>
   );

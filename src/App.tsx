@@ -35,6 +35,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import Details from "./pages/Details";
 
 setupIonicReact();
 
@@ -51,6 +52,9 @@ const App: React.FC = () => (
           </Route>
           <Route path="/profile">
             <Profile />
+          </Route>
+          <Route exact path="/details">
+            <Details />
           </Route>
           <Route exact path="/">
             <Redirect to="/home" />

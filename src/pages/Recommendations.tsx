@@ -37,11 +37,12 @@ const Recommendations: React.FC = () => {
           <IonPage >
               <IonContent >
                   <div className="bg-gray-100 h-fit min-h-full">
+                      <Heading name={"Recommendations"}/>
               <Container >
-                  <Heading name={"Recommendations"}/>
 
-                  <div className={"flex gap-5 items-center my-6"}>
-                      <IonIcon style={{width: '30px', height: '30px'}} icon={bulb}/>
+
+                  <div className={"flex gap-5 items-center my-5"}>
+                      <IonIcon icon={bulb}/>
                       <div className="text-2xl font-semibold">Insights</div>
                   </div>
 
@@ -49,7 +50,7 @@ const Recommendations: React.FC = () => {
                   <div>
                       {insightData.map((e: any) => {
                           return (
-                              <div className={"py-4 gap-1 flex flex-col"}>
+                              <div className={"py-3 gap-1 flex flex-col"}>
                                   <span style={{lineHeight: "15pt"}}
                                         className={"font-semibold text-lg"}>{e.title}</span>
                                   <div onClick={() => {window.location.replace(e.url)}} className={"flex gap-6 items-center"}>
@@ -62,8 +63,8 @@ const Recommendations: React.FC = () => {
                       })}
                   </div>
 
-                  <div className={"flex items-center mt-8"}>
-                      <IonIcon className={"px-1"} style={{width: '30px', height: '30px'}} icon={flame}/>
+                  <div className={"flex items-center gap-5 my-6"}>
+                      <IonIcon    icon={flame}/>
                       <div className="text-2xl font-semibold">Recipes</div>
                   </div>
                   <div className="max-w-md mx-auto my-2 p-6 bg-white rounded-3xl flex flex-col gap-4">
